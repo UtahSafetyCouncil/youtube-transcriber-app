@@ -26,6 +26,12 @@ install_ffmpeg()
 import streamlit as st
 import subprocess
 import os
+import imageio_ffmpeg
+import os
+
+ffmpeg_path = imageio_ffmpeg.get_ffmpeg_exe()
+os.environ["FFMPEG_PATH"] = ffmpeg_path
+
 import torch
 torch.classes.__path__ = []  # Fixes Streamlit import warning
 import os
