@@ -1,3 +1,28 @@
+import os
+import platform
+import zipfile
+import urllib.request
+
+def install_ffmpeg():
+    ffmpeg_path = os.path.abspath("ffmpeg/bin/ffmpeg.exe")
+    if platform.system() == "Windows" and not os.path.exists(ffmpeg_path):
+        print("Downloading ffmpeg...")
+        url = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip"
+        zip_path = "ffmpeg.zip"
+        urllib.request.urlretrieve(url, zip_path)
+        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+            zip_ref.extractall("ffmpeg")
+        os.remove(zip_path)
+        print("ffmpeg downloaded and extracted.")
+
+    # Add Linux or Mac here if you want cross-platform support
+
+    # Add ffmpeg bin to PATH so yt-dlp and whisper find it
+    ffmpeg_bin_dir = os.path.abspath("ffmpeg/bin")
+    os.environ["PATH"] += os.pathsep + ffmpeg_bin_dir
+
+install_ffmpeg()
+
 import streamlit as st
 import subprocess
 import os
