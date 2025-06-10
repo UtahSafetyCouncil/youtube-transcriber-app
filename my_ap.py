@@ -1,6 +1,8 @@
 import streamlit as st
 import subprocess
 import os
+import torch
+torch.classes.__path__ = []  # Fixes Streamlit import warning
 import whisper
 import yt_dlp
 from datetime import datetime
