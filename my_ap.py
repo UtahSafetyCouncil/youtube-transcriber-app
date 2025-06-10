@@ -1,3 +1,8 @@
+import imageio_ffmpeg
+import os
+
+os.environ["PATH"] += os.pathsep + os.path.dirname(imageio_ffmpeg.get_ffmpeg_exe())
+
 import os
 import platform
 import zipfile
