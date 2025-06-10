@@ -3,6 +3,10 @@ import subprocess
 import os
 import torch
 torch.classes.__path__ = []  # Fixes Streamlit import warning
+import ffmpeg_static
+ffmpeg_path = ffmpeg_static.get_ffmpeg_version()  
+import os
+os.environ["FFMPEG_PATH"] = ffmpeg_path
 import whisper
 import yt_dlp
 from datetime import datetime
